@@ -174,6 +174,9 @@ def train_test(model, train_data, test_data):
     torch.autograd.set_detect_anomaly(True)
     total_loss = 0.0
     slices = train_data.generate_batch(model.batch_size)
+    
+    print time.asctime( time.localtime(time.time()) )
+    
     for i in slices:
         model.zero_grad()
         targets, scores, con_loss = forward(model, i, train_data)
