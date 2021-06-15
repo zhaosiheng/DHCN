@@ -183,6 +183,9 @@ def train_test(model, train_data, test_data):
 #        print(loss.item())
         model.optimizer.step()
         total_loss += loss
+        
+        print time.asctime( time.localtime(time.time()) )
+        
     print('\tLoss:\t%.3f' % total_loss)
     top_K = [5, 10, 20]
     metrics = {}
