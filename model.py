@@ -175,8 +175,6 @@ def train_test(model, train_data, test_data):
     total_loss = 0.0
     slices = train_data.generate_batch(model.batch_size)
     
-    print time.asctime( time.localtime(time.time()) )
-    
     for i in slices:
         model.zero_grad()
         targets, scores, con_loss = forward(model, i, train_data)
@@ -186,9 +184,7 @@ def train_test(model, train_data, test_data):
 #        print(loss.item())
         model.optimizer.step()
         total_loss += loss
-        
-        print time.asctime( time.localtime(time.time()) )
-        
+               
     print('\tLoss:\t%.3f' % total_loss)
     top_K = [5, 10, 20]
     metrics = {}
